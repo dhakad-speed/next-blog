@@ -1,0 +1,49 @@
+@use "../../styles/default.scss" as *;
+nav{
+  padding:0px 24px 0px 16px;
+  height: 60px;
+
+  border-bottom: 1px solid $BlogBorder;
+  display: flex;
+    justify-content: space-between;
+  .nav-content{
+    display: flex;
+    width: 100%;
+    .left{
+      display: flex;
+      flex:1 0 auto;
+      .left-content{
+       display: flex;
+       align-items: center;
+        gap: 20px;
+        .menu{
+          cursor: pointer;
+          width: 40px;
+          height: 40px;
+          
+        }
+        .logo{
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        
+      }
+    }
+    .right{
+      display: flex;
+      justify-content: flex-end;
+      .right-content{
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+      
+    }
+  }
+
+
+
+}
+
+
