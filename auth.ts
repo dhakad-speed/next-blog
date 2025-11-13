@@ -4,10 +4,6 @@ import Google from "next-auth/providers/google";
 import { dbConnect } from "./src/lib/dbConnect";
 import UserModel from "./src/model/User";
 import { verifyPassword } from "./src/utils/hashPassword";
-const buildDefaultAvatar = (identifier: string) =>
-  `https://ui-avatars.com/api/?name=${encodeURIComponent(
-    identifier
-  )}&background=random`;
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   secret: String(process.env.NEXTAUTH_SECRET),
@@ -90,11 +86,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (typeof userWithMeta.username === "string") {
           token.username = userWithMeta.username;
         }
-        token.picture =
-          userWithMeta.image ??
-          buildDefaultAvatar(
-            userWithMeta.username ?? userWithMeta.email ?? "User"
-          );
       }
       return token;
     },

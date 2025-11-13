@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import BaseBox from "../common/BaseBox";
 import { Grid, InputBase, Container } from "@mui/material";
@@ -9,13 +9,13 @@ import "./Signin.scss";
 import { DiagonalDiv } from "../Constants";
 import { signIn } from "next-auth/react";
 import { SignInSchema } from "@/src/schemas/AuthSchema";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import createUser from "@/PostUser";
 
 function SignInPage() {
-  const { status, data: session } = useSession();
+  // const { status, data: session } = useSession();
   const router = useRouter();
   const vectorImage = "https://images.tryspeed.dev/app/vector.png";
 
@@ -44,21 +44,22 @@ function SignInPage() {
         if (!performLogin.error) {
           console.log("error in authentication");
         }
+        router.push("/");
       } catch (error) {
         console.error("Unexpected error:", error);
       }
     },
   });
 
-  useEffect(() => {
-    if (status === "loading") return;
-    if (status === "unauthenticated" && !session) {
-      router.push("/auth/sign-in");
-    }
-    if (status === "authenticated") {
-      router.push("/");
-    }
-  }, [status, router, session]);
+  // useEffect(() => {
+  //   if (status === "loading") return;
+  //   if (status === "unauthenticated" && !session) {
+  //     router.push("/auth/sign-in");
+  //   }
+  //   if (status === "authenticated") {
+  //     router.push("/");
+  //   }
+  // }, [status, router, session]);
 
   return (
     <Grid display={"grid"}>

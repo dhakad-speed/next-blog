@@ -1,21 +1,21 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { useSession, signOut } from "next-auth/react";
 import BaseBox from "../common/BaseBox";
 import Text from "../common/Text";
 import Image from "next/image";
 import "./Profile.scss";
 import BaseButton from "../common/BaseButton";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 const ProfilePage = () => {
-  const { data: session, status } = useSession();
-  const router = useRouter();
+  const { data: session } = useSession();
+  // const router = useRouter();
 
-  useEffect(() => {
-    if (!session && status === "unauthenticated") {
-      router.push("/auth/sign-in");
-    }
-  }, [session, status, router]);
+  // useEffect(() => {
+  //   if (!session && status === "unauthenticated") {
+  //     router.push("/auth/sign-in");
+  //   }
+  // }, [session, status, router]);
   const ProfileContent = (
     <BaseBox
       className="content"

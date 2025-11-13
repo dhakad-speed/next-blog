@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
+import { useEffect } from "react";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -22,6 +23,9 @@ const SignupPage = () => {
       router.push("/");
     }
   }, [status, router, session]);
+  const handleSignIn = () => {
+    signIn("google");
+  };
   return (
     <Grid display={"grid"}>
       <DiagonalDiv
@@ -53,10 +57,7 @@ const SignupPage = () => {
                       gap={3}
                     >
                       <BaseBox className="social-providers">
-                        <BaseButton
-                          className="btn"
-                          onClick={() => signIn("google")}
-                        >
+                        <BaseButton className="btn" onClick={handleSignIn}>
                           <Image
                             src="https://images.tryspeed.dev/app/google-icon.svg"
                             alt="google-log"
