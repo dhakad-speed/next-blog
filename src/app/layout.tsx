@@ -1,4 +1,3 @@
-// src/app/layout.tsx
 import "./globals.css";
 import "./Layout.scss";
 import { Inter } from "next/font/google";
@@ -14,6 +13,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   if (!session) {
     redirect("/auth/sign-in");
   }
+  console.log("I am Server Component");
   return (
     <html lang="en">
       <body className={inter.variable}>

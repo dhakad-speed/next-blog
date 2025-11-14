@@ -14,7 +14,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   const isAuthRoute =
     pathname?.startsWith("/auth/sign-in") ||
     pathname.startsWith("/auth/sign-up");
-
+  console.log("I am Client Component");
   return (
     <SessionProvider>
       <Provider store={store}>
