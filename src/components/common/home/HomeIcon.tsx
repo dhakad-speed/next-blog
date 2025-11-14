@@ -1,5 +1,3 @@
-import React from "react";
-
 const HomeIcon: React.FC = () => {
   return (
     <svg

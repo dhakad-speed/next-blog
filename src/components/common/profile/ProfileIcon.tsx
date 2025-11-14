@@ -1,5 +1,3 @@
-import React from "react";
-
 const ProfileIcon: React.FC = () => {
   return (
     <svg

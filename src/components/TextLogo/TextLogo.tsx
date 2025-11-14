@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import BaseBox from "../common/BaseBox";
 import { BoxProps } from "@mui/material";

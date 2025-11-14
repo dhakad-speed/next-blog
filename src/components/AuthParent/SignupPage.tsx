@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { useEffect } from "react";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -15,6 +15,7 @@ import "./Signup.scss";
 const SignupPage = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
+  const [isHovered, setIsHovered] = useState(false);
   const vectorImage = "https://images.tryspeed.dev/app/vector.png";
   useEffect(() => {
     if (status === "loading") return;
@@ -77,7 +78,10 @@ const SignupPage = () => {
                           style={{
                             fontSize: "15px",
                             color: "#2a67ff",
+                            textDecoration: isHovered ? "underline" : "none",
                           }}
+                          onMouseEnter={() => setIsHovered(true)}
+                          onMouseLeave={() => setIsHovered(false)}
                         >
                           Sign In
                         </Link>

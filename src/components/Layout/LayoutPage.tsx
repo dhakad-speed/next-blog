@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { useEffect } from "react";
+
+import { useEffect, Fragment } from "react";
 import Navbar from "../Navbar/Navbar";
 import AppDrawer from "../Drawer/AppDrawer";
 import BaseBox from "../common/BaseBox";
@@ -38,7 +38,7 @@ const LayoutPage = ({ children }: LayoutPage) => {
     }
   }, [status, session, router]);
   return (
-    <React.Fragment>
+    <Fragment>
       <BaseBox>
         <Navbar />
         <AppDrawer />
@@ -46,7 +46,7 @@ const LayoutPage = ({ children }: LayoutPage) => {
           {children}
         </BaseBox>
       </BaseBox>
-    </React.Fragment>
+    </Fragment>
   );
 };
 

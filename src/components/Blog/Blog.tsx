@@ -1,4 +1,3 @@
-import React from "react";
 import BaseBox from "../common/BaseBox";
 import Text from "../common/Text";
 import "./Blog.scss";

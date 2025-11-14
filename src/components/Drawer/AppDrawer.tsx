@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { Drawer } from "@mui/material";
 import { RootState } from "@/src/redux/store";
@@ -8,6 +7,7 @@ import HomeIcon from "../common/home/HomeIcon";
 import ProfileIcon from "../common/profile/ProfileIcon";
 import Text from "../common/Text";
 import { usePathname } from "next/navigation";
+import { Fragment } from "react/jsx-runtime";
 // import { useSession } from "next-auth/react";
 
 const drawerWidth = 240;
@@ -56,7 +56,7 @@ const AppDrawer = () => {
         className="Drawer-Content"
       >
         {/* {status === "unauthenticated" && ( */}
-        <React.Fragment>
+        <Fragment>
           <Link
             href={"/"}
             style={{
@@ -78,7 +78,7 @@ const AppDrawer = () => {
             <ProfileIcon />
             <Text variant="h5">Profile</Text>
           </Link>
-        </React.Fragment>
+        </Fragment>
         {/* )} */}
       </BaseBox>
     </BaseBox>

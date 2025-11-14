@@ -1,4 +1,3 @@
-import React from "react";
 import SignInPage from "@/src/components/AuthParent/SignInPage";
 import { Metadata } from "next";
 export const metadata: Metadata = {

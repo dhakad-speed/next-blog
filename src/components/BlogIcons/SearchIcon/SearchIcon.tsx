@@ -1,5 +1,3 @@
-import React from "react";
-
 import "./Search.scss";
 const SearchIcon = () => {
   return (

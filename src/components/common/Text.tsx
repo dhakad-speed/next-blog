@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { Typography, type TypographyProps } from "@mui/material";
 
 const Text: React.FC<TypographyProps> = (props) => {
