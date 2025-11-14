@@ -7,25 +7,35 @@ const PUBLIC_PATHS = [
   "/favicon.ico",
   "/api/auth",
 ];
+const PROTECTED_ROUTES = [
+  "/dashboard",
+  "/profile",
+  "/write",
+  "/my/notification",
+];
 
 export async function proxy(req: Request) {
   const { pathname } = new URL(req.url);
-
-  if (PUBLIC_PATHS.some((path) => pathname.startsWith(path))) {
-    return NextResponse.next();
-  }
-
   const token = await getToken({ req });
-
-  if (!token) {
+  if (
+    !token &&
+    PROTECTED_ROUTES.some((protect) => pathname.startsWith(protect))
+  ) {
     const signInUrl = new URL("/auth/sign-in", req.url);
     signInUrl.searchParams.set("callbackUrl", req.url); // optional
     return NextResponse.redirect(signInUrl);
   }
-  if (token && pathname.startsWith("/")) {
-    const authenticatedUrl = new URL("/dashboard", req.url);
-    authenticatedUrl.searchParams.set("callbackUrl", req.url);
-    return NextResponse.redirect(authenticatedUrl);
+  if (PUBLIC_PATHS.some((path) => pathname.startsWith(path))) {
+    const token = await getToken({ req });
+    if (
+      token &&
+      pathname.startsWith("/auth/sign-in") &&
+      pathname.startsWith("/auth/sign-up")
+    ) {
+      return NextResponse.redirect(new URL("/dashboard", req.url));
+    }
+
+    return NextResponse.next();
   }
 
   return NextResponse.next();

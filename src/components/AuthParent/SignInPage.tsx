@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BaseBox from "../common/BaseBox";
 import { Grid, InputBase, Container } from "@mui/material";
 import BaseButton from "../common/BaseButton";
@@ -9,13 +9,13 @@ import "./Signin.scss";
 import { DiagonalDiv } from "../Constants";
 import { signIn } from "next-auth/react";
 import { SignInSchema } from "@/src/schemas/AuthSchema";
-// import { useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import createUser from "@/PostUser";
 
 function SignInPage() {
-  // const { status, data: session } = useSession();
+  const { status, data: session } = useSession();
   const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
   const vectorImage = "https://images.tryspeed.dev/app/vector.png";
@@ -52,15 +52,13 @@ function SignInPage() {
     },
   });
 
-  // useEffect(() => {
-  //   if (status === "loading") return;
-  //   if (status === "unauthenticated" && !session) {
-  //     router.push("/auth/sign-in");
-  //   }
-  //   if (status === "authenticated") {
-  //     router.push("/");
-  //   }
-  // }, [status, router, session]);
+  useEffect(() => {
+    if (status === "loading") return;
+
+    if (status === "authenticated") {
+      router.push("/");
+    }
+  }, [status, router, session]);
 
   return (
     <Grid display={"grid"}>
