@@ -48,7 +48,7 @@ function Navbar() {
                 Write
               </BaseBox>
             </Link>
-            <Link href={"/my/notification"}>
+            <Link href={"/me/notification"}>
               <BaseIconButton>
                 <NotificationIcon />
               </BaseIconButton>

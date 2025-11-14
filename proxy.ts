@@ -11,7 +11,7 @@ const PROTECTED_ROUTES = [
   "/dashboard",
   "/profile",
   "/write",
-  "/my/notification",
+  "/me/notification",
 ];
 
 export async function proxy(req: Request) {
