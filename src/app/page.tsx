@@ -1,5 +1,12 @@
-const Home = () => {
-  return <div>page</div>;
-};
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
-export default Home;
+export default async function Home() {
+  const session = await auth();
+
+  if (!session) {
+    redirect("/auth/sign-in");
+  }
+
+  return <div>page</div>;
+}
