@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   const session = auth();
 
   if (!session) {
-    redirect("/auth/sign-in");
+    redirect("/sign-in");
   }
 
   return (

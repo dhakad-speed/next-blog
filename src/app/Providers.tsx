@@ -12,8 +12,7 @@ import LayoutPage from "../components/Layout/LayoutPage";
 export default function Providers({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isAuthRoute =
-    pathname?.startsWith("/auth/sign-in") ||
-    pathname.startsWith("/auth/sign-up");
+    pathname?.startsWith("/sign-in") || pathname.startsWith("/sign-up");
 
   return (
     <SessionProvider>

@@ -12,7 +12,7 @@ const ProfilePage = () => {
 
   // useEffect(() => {
   //   if (!session && status === "unauthenticated") {
-  //     router.push("/auth/sign-in");
+  //     router.push("/sign-in");
   //   }
   // }, [session, status, router]);
   const ProfileContent = (

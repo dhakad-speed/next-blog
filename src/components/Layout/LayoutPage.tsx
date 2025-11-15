@@ -31,7 +31,7 @@ const LayoutPage = ({ children }: LayoutPage) => {
   useEffect(() => {
     if (status === "loading") return;
     if (!session && status === "unauthenticated") {
-      router.push("/auth/sign-in");
+      router.push("/sign-in");
     }
     if (status === "authenticated") {
       router.push("/");

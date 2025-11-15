@@ -154,7 +154,7 @@ function SignInPage() {
                     >
                       <Text variant="body1">Don&apos;t have an Account</Text>
                       <Link
-                        href="/auth/sign-up"
+                        href="/sign-up"
                         style={{
                           fontSize: "15px",
                           color: "#2a67ff",

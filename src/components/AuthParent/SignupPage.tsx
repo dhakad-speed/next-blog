@@ -74,7 +74,7 @@ const SignupPage = () => {
                           Do you already have an account?
                         </Text>
                         <Link
-                          href="/auth/sign-in"
+                          href="/sign-in"
                           style={{
                             fontSize: "15px",
                             color: "#2a67ff",
