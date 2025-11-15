@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import UserModel from "@/src/model/User";
 import { dbConnect } from "@/src/lib/dbConnect";
-import bcrypt from "bcryptjs";
+
+import { hashPassword } from "@/src/utils/encrypt";
 
 export async function POST(request: NextRequest) {
   const { username, email, password } = await request.json();
-  console.log(username);
+
   await dbConnect();
 
   try {
@@ -20,14 +21,14 @@ export async function POST(request: NextRequest) {
           { status: 400 }
         );
       } else {
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await hashPassword(password);
         isExistingUserByEmail.password = hashedPassword;
         isExistingUserByEmail.verifyCode = verifyCode;
         isExistingUserByEmail.verifyCodeExpiry = new Date(Date.now() + 3600000);
         await isExistingUserByEmail.save();
       }
     } else {
-      const hashedPassword = await bcrypt.hash(password, 10);
+      const hashedPassword = await hashPassword(password);
       const expiryDate = new Date();
       expiryDate.setHours(expiryDate.getHours() + 1);
       const newLoginedUser = await UserModel.create({

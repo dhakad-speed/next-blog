@@ -3,7 +3,7 @@ import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import { dbConnect } from "./src/lib/dbConnect";
 import UserModel from "./src/model/User";
-import { verifyPassword } from "./src/utils/hashPassword";
+import { verifyPassword } from "./src/utils/encrypt";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   secret: String(process.env.NEXTAUTH_SECRET),
