@@ -78,7 +78,7 @@ const SignInPage = () => {
                       </BaseBox>
                       <Divider flexItem />
 
-                      <BaseBox display={"flex"} justifyContent={"center"}>
+                      <BaseBox>
                         <BaseButton className="btn" onClick={handleSignIn}>
                           <Image
                             src="https://images.tryspeed.dev/app/google-icon.svg"
