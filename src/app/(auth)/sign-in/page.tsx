@@ -1,4 +1,4 @@
-import SignInPage from "@/src/components/AuthParent/SignInPage";
+import SignInPage from "@/src/components/AuthParent/SigninPage";
 import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Blog: Sign in",
