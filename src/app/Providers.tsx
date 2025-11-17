@@ -23,9 +23,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
             {isAuthRoute ? (
               children
             ) : (
-              <Suspense fallback={<div>Loading...</div>}>
-                <LayoutPage>{children}</LayoutPage>
-              </Suspense>
+              // <Suspense fallback={<div>Loading...</div>}>
+              <LayoutPage>{children}</LayoutPage>
+              // </Suspense>
             )}
           </ThemeProvider>
         </AppRouterCacheProvider>
