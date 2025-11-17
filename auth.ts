@@ -77,7 +77,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        // Assuming 'user' has a 'username' property of type string
         const userWithMeta = user as {
           username?: string;
           email?: string;
@@ -91,18 +90,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async session({ session, token }) {
       if (session.user) {
-        // Set .name, ensuring token.username is a string
         session.user.name =
           session.user.name ??
           (typeof token.username === "string" ? token.username : undefined);
-        // Add a custom username field without using 'any'
+
         (session.user as { username?: string }).username =
           typeof token.username === "string" ? token.username : undefined;
-        // session.user.image =
-        //   session.user.image ??
-        //   (typeof (token as { picture?: unknown }).picture === "string"
-        //     ? (token as { picture?: string }).picture
-        //     : undefined);
       }
       return session;
     },
