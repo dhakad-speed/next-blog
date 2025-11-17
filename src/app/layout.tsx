@@ -3,7 +3,7 @@ import "./Layout.scss";
 import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import Providers from "./Providers";
-import { auth } from "@/auth";
+import { auth } from "../../auth";
 import { redirect } from "next/navigation";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Drawer } from "@mui/material";
-import { RootState } from "@/src/redux/store";
+import { RootState } from "@/redux/store";
 import BaseBox from "../common/BaseBox";
 import Link from "next/link";
 import HomeIcon from "../common/home/HomeIcon";

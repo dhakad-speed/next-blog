@@ -5,7 +5,7 @@ import Navbar from "../Navbar/Navbar";
 import AppDrawer from "../Drawer/AppDrawer";
 import BaseBox from "../common/BaseBox";
 import { useSelector } from "react-redux";
-import { RootState } from "@/src/redux/store";
+import { RootState } from "@/redux/store";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 interface LayoutPage {

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import SignUpPage from "@/src/components/AuthParent/SignupPage";
+import SignUpPage from "@/components/AuthParent/SignupPage";
 export const metadata: Metadata = {
   title: "Blog: Sign up",
   description: "Create a new account to get started with MyApp.",

@@ -1,5 +1,4 @@
-import HomePage from "@/src/components/homepage/HomePage";
-
+import HomePage from "@/components/homepage/HomePage";
 const Dashboard = () => {
   return <HomePage />;
 };

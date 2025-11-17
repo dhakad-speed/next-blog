@@ -9,7 +9,7 @@ import WriteIcon from "../BlogIcons/WriteIcon/WriteIcon";
 import NotificationIcon from "../BlogIcons/NotificationIcon/NotificationIcon";
 import { useDispatch } from "react-redux";
 import Menu from "../Menu/Menu";
-import { setDrawer } from "@/src/redux/slices/OpenSlices";
+import { setDrawer } from "@/redux/slices/OpenSlices";
 import TextLogo from "../TextLogo/TextLogo";
 
 function Navbar() {

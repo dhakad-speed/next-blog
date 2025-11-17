@@ -8,11 +8,11 @@ import Text from "../common/Text";
 import "./Signup.scss";
 import { DiagonalDiv } from "../Constants";
 import { signIn } from "next-auth/react";
-import { SignInSchema } from "@/src/schemas/AuthSchema";
+import { SignInSchema } from "@/schemas/AuthSchema";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
-import createUser from "@/PostUser";
+import createUser from "../../../PostUser";
 
 function SignUpPage() {
   const { status, data: session } = useSession();

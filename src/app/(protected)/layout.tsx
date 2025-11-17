@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { redirect } from "next/navigation";
-import { auth } from "@/auth";
-import Providers from "@/src/app/Providers";
+import { auth } from "../../../auth";
+import Providers from "../Providers";
 
 export default async function ProtectedLayout({
   children,
