@@ -1,7 +1,8 @@
 "use client";
 
 import { SessionProvider } from "next-auth/react";
-import { Suspense } from "react";
+// import SessionLoader from "@/components/SessionLoader";
+// import { Suspense } from "react";
 import { Provider } from "react-redux";
 import { usePathname } from "next/navigation";
 import { ThemeProvider } from "@mui/material";
@@ -23,8 +24,10 @@ export default function Providers({ children }: { children: React.ReactNode }) {
             {isAuthRoute ? (
               children
             ) : (
-              // <Suspense fallback={<div>Loading...</div>}>
+              // <Suspense fallback={null}>
+              //   <SessionLoader>
               <LayoutPage>{children}</LayoutPage>
+              //   </SessionLoader>
               // </Suspense>
             )}
           </ThemeProvider>

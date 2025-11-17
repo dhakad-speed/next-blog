@@ -7,7 +7,11 @@ import { auth } from "../../auth";
 import { redirect } from "next/navigation";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const session = auth();
 
   if (!session) {
