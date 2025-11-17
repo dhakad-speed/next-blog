@@ -1,11 +1,11 @@
 import { Metadata } from "next";
-import SignUpPage from "@/components/AuthParent/SignupPage";
+import Register from "@/components/AuthParent/Register";
 export const metadata: Metadata = {
   title: "Blog: Sign up",
   description: "Create a new account to get started with MyApp.",
 };
 function Signup() {
-  return <SignUpPage />;
+  return <Register />;
 }
 
 export default Signup;

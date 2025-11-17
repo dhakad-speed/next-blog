@@ -11,8 +11,8 @@ import BaseBox from "../common/BaseBox";
 import Link from "next/link";
 import { DiagonalDiv } from "../Constants";
 import BaseButton from "../common/BaseButton";
-import "./Signin.scss";
-const SignInPage = () => {
+import "./Login.scss";
+const Login = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
   const [isHovered, setIsHovered] = useState(false);
@@ -122,4 +122,4 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+export default Login;

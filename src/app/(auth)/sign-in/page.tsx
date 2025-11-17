@@ -1,11 +1,11 @@
 import { Metadata } from "next";
-import SignInPage from "@/components/AuthParent/SigninPage";
+import Login from "@/components/AuthParent/Login";
 export const metadata: Metadata = {
   title: "Blog: Sign in",
-  description: "Create a new account to get started with MyApp.",
+  description: "Sign in to your account to get started with MyApp.",
 };
 const Signin = () => {
-  return <SignInPage />;
+  return <Login />;
 };
 
 export default Signin;

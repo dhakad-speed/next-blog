@@ -5,7 +5,7 @@ import BaseBox from "../common/BaseBox";
 import { Grid, InputBase, Container } from "@mui/material";
 import BaseButton from "../common/BaseButton";
 import Text from "../common/Text";
-import "./Signup.scss";
+import "./Register.scss";
 import { DiagonalDiv } from "../Constants";
 import { signIn } from "next-auth/react";
 import { SignInSchema } from "@/schemas/AuthSchema";
@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import createUser from "../../../PostUser";
 
-function SignUpPage() {
+function Register() {
   const { status, data: session } = useSession();
   const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
@@ -173,7 +173,7 @@ function SignUpPage() {
   );
 }
 
-export default SignUpPage;
+export default Register;
 //https://accounts.google.com/
 // v3/
 // signin/
