@@ -1,19 +1,19 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-// interface Message extends Document {
-//   content: string;
-//   createdAt: Date;
-// }
+export interface Message extends Document {
+  content: string;
+  createdAt: Date;
+}
 
-// const MessageSchema: Schema<Message> = new Schema({
-//   content: {
-//     type: String,
-//   },
-//   createdAt: {
-//     type: Date,
-//     default: Date.now(),
-//   },
-// });
+const MessageSchema: Schema<Message> = new Schema({
+  content: {
+    type: String,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+});
 
 interface User extends Document {
   username: string;
@@ -22,6 +22,8 @@ interface User extends Document {
   verifyCode: string;
   verifyCodeExpiry: Date;
   isVerified: boolean;
+  isAcceptingMessages: boolean;
+  message: Array<Message>;
 }
 
 const userSchema: Schema<User> = new Schema({
@@ -50,6 +52,11 @@ const userSchema: Schema<User> = new Schema({
     type: Date,
     default: Date.now,
   },
+  isAcceptingMessages: {
+    type: Boolean,
+    default: true,
+  },
+  message: [MessageSchema],
 });
 
 const UserModel =

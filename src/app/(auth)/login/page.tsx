@@ -4,8 +4,8 @@ export const metadata: Metadata = {
   title: "Blog: Sign in",
   description: "Sign in to your account to get started with MyApp.",
 };
-const Signin = () => {
+const LoginComponent = () => {
   return <Login />;
 };
 
-export default Signin;
+export default LoginComponent;

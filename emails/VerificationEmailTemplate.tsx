@@ -9,15 +9,15 @@ import {
   Text,
 } from "@react-email/components";
 
-interface VerificationEmailProps {
+interface VerificationEmailTemplateProps {
   username: string;
   verifyCode: string;
 }
 
-export default function VerificationEmail({
+export default function VerificationEmailTemplate({
   username,
   verifyCode,
-}: VerificationEmailProps) {
+}: VerificationEmailTemplateProps) {
   return (
     <Html lang="en" dir="ltr">
       <Head>
@@ -52,14 +52,6 @@ export default function VerificationEmail({
             If you did not request this code, please ignore this email.
           </Text>
         </Row>
-        {/* <Row>
-            <Button
-              href={`http://localhost:3000/verify/${username}`}
-              style={{ color: '#61dafb' }}
-            >
-              Verify here
-            </Button>
-          </Row> */}
       </Section>
     </Html>
   );

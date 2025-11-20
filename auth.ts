@@ -6,7 +6,7 @@ import UserModel from "./src/model/User";
 import { verifyPassword } from "./src/utils/encrypt";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  secret: String(process.env.NEXTAUTH_SECRET),
+  secret: String(process.env.NEXT_PUBLIC_BETTER_AUTH_SECRET),
   providers: [
     Credentials({
       credentials: {
@@ -75,15 +75,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ user, token }) {
       if (user) {
-        const userWithMeta = user as {
+        const encryptUser = user as {
           username?: string;
           email?: string;
-          image?: string;
         };
-        if (typeof userWithMeta.username === "string") {
-          token.username = userWithMeta.username;
+        if (
+          typeof encryptUser.username === "string" &&
+          typeof encryptUser.email
+        ) {
+          token.name = encryptUser.username;
+          token.email = encryptUser.email;
         }
       }
       return token;
@@ -91,11 +94,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ session, token }) {
       if (session.user) {
         session.user.name =
-          session.user.name ??
-          (typeof token.username === "string" ? token.username : undefined);
+          (session.user.name ?? typeof token.name === "string")
+            ? token.name
+            : undefined;
 
         (session.user as { username?: string }).username =
-          typeof token.username === "string" ? token.username : undefined;
+          typeof token.name === "string" ? token.name : undefined;
       }
       return session;
     },

@@ -1,8 +1,12 @@
-import Hydration from "@/components/Hydration/Hydration";
+import React, { ReactNode } from "react";
+import "./auth.scss";
 import { Inter } from "next/font/google";
-import { ReactNode } from "react";
+import Hydration from "@/components/Hydration/Hydration";
+interface AuthLayoutProps {
+  children: ReactNode;
+}
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-export default function RootLayout({ children }: { children: ReactNode }) {
+function layout({ children }: AuthLayoutProps) {
   return (
     <html lang="en">
       <body className={inter.variable}>
@@ -11,3 +15,5 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   );
 }
+
+export default layout;

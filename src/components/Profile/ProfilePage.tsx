@@ -3,23 +3,17 @@ import React, { useState, useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";
 import BaseBox from "../common/BaseBox";
 import Text from "../common/Text";
-import Image from "next/image";
 import "./Profile.scss";
-import { Skeleton } from "@mui/material";
+import { Skeleton, Avatar } from "@mui/material";
 import BaseButton from "../common/BaseButton";
 
-// import { useRouter } from "next/navigation";
 const ProfilePage = () => {
   const [loading, setLoading] = useState(true);
   const { data: session, status } = useSession();
-  // const router = useRouter();
 
   useEffect(() => {
     setLoading(status === "loading");
   }, [status]);
-  // const ProfileContent = (
-
-  // );
 
   return (
     <React.Fragment>
@@ -49,12 +43,11 @@ const ProfilePage = () => {
                   {loading ? (
                     <Skeleton width={40} height={40} variant="circular" />
                   ) : (
-                    <Image
-                      src={session?.user?.image || "/logo.png"}
-                      alt="profile"
-                      width={40}
-                      height={40}
-                      style={{ borderRadius: "50%" }}
+                    <Avatar
+                      src={
+                        session?.user?.image ||
+                        "https://images.tryspeed.dev/chrome-wallet/default-user.svg"
+                      }
                     />
                   )}
                   {loading ? (

@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import BaseBox from "../common/BaseBox";
 import { Grid, InputBase, Container } from "@mui/material";
 import BaseButton from "../common/BaseButton";
@@ -9,14 +9,10 @@ import "./Register.scss";
 import { DiagonalDiv } from "../Constants";
 import { signIn } from "next-auth/react";
 import { SignInSchema } from "@/schemas/AuthSchema";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import createUser from "../../../PostUser";
 
 function Register() {
-  const { status, data: session } = useSession();
-  const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
   const vectorImage = "https://images.tryspeed.dev/app/vector.png";
 
@@ -46,20 +42,11 @@ function Register() {
           if (!performLogin.error) {
             console.log("error in authentication");
           }
-          router.push("/");
         } catch (error) {
           console.error("Unexpected error:", error);
         }
       },
     });
-
-  useEffect(() => {
-    if (status === "loading") return;
-
-    if (status === "authenticated") {
-      router.push("/");
-    }
-  }, [status, router, session]);
 
   return (
     <Grid display={"grid"}>
@@ -150,7 +137,7 @@ function Register() {
                         Do you already have an account?
                       </Text>
                       <Link
-                        href="/sign-in"
+                        href="/login"
                         style={{
                           fontSize: "15px",
                           color: "#2a67ff",

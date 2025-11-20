@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+
 import { Grid, Container, InputBase, Divider } from "@mui/material";
 import Text from "../common/Text";
 import BaseBox from "../common/BaseBox";
@@ -13,19 +12,11 @@ import { DiagonalDiv } from "../Constants";
 import BaseButton from "../common/BaseButton";
 import "./Login.scss";
 const Login = () => {
-  const router = useRouter();
-  const { data: session, status } = useSession();
   const [isHovered, setIsHovered] = useState(false);
   const vectorImage = "https://images.tryspeed.dev/app/vector.png";
-  useEffect(() => {
-    if (status === "loading") return;
 
-    if (status === "authenticated") {
-      router.push("/");
-    }
-  }, [status, router, session]);
   const handleSignIn = () => {
-    signIn("google");
+    signIn("google", { redirectTo: "/dashboard" });
   };
   return (
     <Grid display={"grid"}>
@@ -59,16 +50,6 @@ const Login = () => {
                         gap={2}
                         component={"form"}
                       >
-                        {/* <BaseButton className="btn" onClick={handleSignIn}>
-                          <Image
-                            src="https://images.tryspeed.dev/app/google-icon.svg"
-                            alt="google-log"
-                            width={20}
-                            height={20}
-                          />
-                          <Text> Continue With Google</Text>
-                        </BaseButton> */}
-
                         <InputBase
                           placeholder="Enter your username or email"
                           className=""
@@ -97,7 +78,7 @@ const Login = () => {
                       >
                         <Text variant="body1">Don&apos;t have an Account</Text>
                         <Link
-                          href="/sign-up"
+                          href="/register"
                           style={{
                             fontSize: "15px",
                             color: "#2a67ff",

@@ -1,49 +1,46 @@
 "use client";
 
-import { useEffect, Fragment } from "react";
+import { Fragment } from "react";
 import Navbar from "../Navbar/Navbar";
 import AppDrawer from "../Drawer/AppDrawer";
 import BaseBox from "../common/BaseBox";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import "./Layout.scss";
+
 interface LayoutPage {
   children: React.ReactNode;
 }
 
 const LayoutPage = ({ children }: LayoutPage) => {
-  const { data: session, status } = useSession();
   const drawerOpen = useSelector(
     (state: RootState) => state.openReducer.drawers.sideBar
   );
-  const router = useRouter();
+
   const drawerWidth = 240;
   const ContentStyle = {
     flexGrow: 1,
-    p: 3,
-    transition: "margin 0.3s ease, width 0.3s ease",
+    background: "#f7fafc",
+    transition: "all 0.3s ease",
     marginLeft: drawerOpen ? ` ${drawerWidth}px` : 0,
     width: drawerOpen ? `calc(100% - ${drawerWidth}px)` : "100%",
-    display: "flex",
-    justifyContent: "center",
   };
-  useEffect(() => {
-    if (status === "loading") return;
-    if (!session && status === "unauthenticated") {
-      router.push("/sign-in");
-    }
-    if (status === "authenticated") {
-      router.push("/");
-    }
-  }, [status, session, router]);
+
   return (
     <Fragment>
       <BaseBox>
         <Navbar />
-        <AppDrawer />
-        <BaseBox component="main" sx={ContentStyle}>
-          {children}
+        <BaseBox component={"main"}>
+          <AppDrawer />
+          <BaseBox
+            display={"flex"}
+            justifyContent={"center"}
+            padding={4}
+            component="section"
+            sx={ContentStyle}
+          >
+            {children}
+          </BaseBox>
         </BaseBox>
       </BaseBox>
     </Fragment>

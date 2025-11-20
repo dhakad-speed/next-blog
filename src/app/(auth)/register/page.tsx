@@ -4,8 +4,8 @@ export const metadata: Metadata = {
   title: "Blog: Sign up",
   description: "Create a new account to get started with MyApp.",
 };
-function Signup() {
+function RegisterComponent() {
   return <Register />;
 }
 
-export default Signup;
+export default RegisterComponent;
